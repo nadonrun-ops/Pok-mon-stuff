@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh and Jett's Poké-Print Lab</title>
+    <!-- Tailwind CSS for sleek UI styling -->
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        @import url('https://googleapis.com');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .pokemon-card-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen pokemon-card-gradient">
+
+    <!-- Header Navigation Section -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-red-500 p-2.5 rounded-xl shadow-lg border border-red-400">
+                    <span class="text-xl">🛑</span>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                        Josh & Jett's <span class="text-yellow-400">Poké-Print Lab</span>
+                    </h1>
+                    <p class="text-xs text-slate-400 font-medium">Exclusive to King's Bangkok Trainers & Professors</p>
+                </div>
+            </div>
+            <nav class="flex items-center gap-2">
+                <button onclick="switchTab('shop')" id="btn-shop" class="px-4 py-2 bg-yellow-500 text-slate-950 font-bold rounded-xl text-sm transition shadow-md shadow-yellow-500/20">🛒 Lab Shop</button>
+                <button onclick="switchTab('tracker')" id="btn-tracker" class="px-4 py-2 bg-slate-800 text-slate-300 font-semibold rounded-xl text-sm hover:bg-slate-700 transition">🔍 Track Card</button>
+                <button onclick="switchTab('portal')" id="btn-portal" class="px-4 py-2 bg-slate-800 text-slate-300 font-semibold rounded-xl text-sm hover:bg-slate-700 transition">👑 Lab Master</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main App Content Container -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        
+        <!-- Important Physical Notice -->
+        <div class="mb-8 p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-start gap-3">
+            <span class="text-xl mt-0.5">⚠️</span>
+            <div>
+                <h4 class="font-bold text-amber-400 text-sm">Professor's Laboratory Notice</h4>
+                <p class="text-xs text-amber-200/80 mt-0.5">No electronics or digital components are involved in these fabrications. Items are completely solid, 3D-printed plastic collectible tokens, slabs, and card deck cases.</p>
+            </div>
+        </div>
+
+        <!-- ================= SHOP TAB ================= -->
+        <div id="tab-shop" class="space-y-10">
+            <div class="text-center py-6 max-w-2xl mx-auto space-y-3">
+                <h2 class="text-3xl font-black md:text-4xl text-white tracking-tight">Forge Digital Card Assets into <span class="text-yellow-400">3D Plastic Reality</span></h2>
+                <p class="text-slate-400 text-sm leading-relaxed">Select a physical layout template below, inject custom energy types, scaling adjustments, and view customized Thai Baht pricing instantly.</p>
+            </div>
+
+            <!-- Catalog Inventory -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition flex flex-col group">
+                    <div class="aspect-video bg-slate-950 relative flex items-center justify-center border-b border-slate-800 overflow-hidden">
+                        <span class="text-6xl group-hover:scale-110 transition duration-300">🃏</span>
+                        <span class="absolute top-3 right-3 bg-yellow-500/10 text-yellow-400 text-xs px-2.5 py-1 rounded-full font-bold border border-yellow-500/20">Holo Textured</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Custom 3D-Textured Pokémon Card</h3>
+                            <p class="text-slate-400 text-xs mt-1">A premium, thick slab card featuring a raised, tactile 3D relief model of your selected Pokémon asset frame.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-xl font-black text-yellow-400">฿180 <span class="text-xs text-slate-500 font-normal">base</span></span>
+                            <button onclick="openConfig('Custom 3D-Textured Card', 180)" class="px-4 py-2 bg-slate-800 text-white font-semibold text-xs rounded-xl hover:bg-yellow-500 hover:text-slate-950 transition">Configure Base</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition flex flex-col group">
+                    <div class="aspect-video bg-slate-950 relative flex items-center justify-center border-b border-slate-800 overflow-hidden">
+                        <span class="text-6xl group-hover:scale-110 transition duration-300">🛡️</span>
+                        <span class="absolute top-3 right-3 bg-blue-500/10 text-blue-400 text-xs px-2.5 py-1 rounded-full font-bold border border-blue-500/20">Armor Grade</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Poké-Slab Display Protector</h3>
+                            <p class="text-slate-400 text-xs mt-1">Hard armor display protection housing designed to hold authentic physical cards with customizable engraved outer frames.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-xl font-black text-yellow-400">฿120 <span class="text-xs text-slate-500 font-normal">base</span></span>
+                            <button onclick="openConfig('Poké-Slab Protector', 120)" class="px-4 py-2 bg-slate-800 text-white font-semibold text-xs rounded-xl hover:bg-yellow-500 hover:text-slate-950 transition">Configure Base</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-slate-700 transition flex flex-col group">
+                    <div class="aspect-video bg-slate-950 relative flex items-center justify-center border-b border-slate-800 overflow-hidden">
+                        <span class="text-6xl group-hover:scale-110 transition duration-300">🌀</span>
+                        <span class="absolute top-3 right-3 bg-purple-500/10 text-purple-400 text-xs px-2.5 py-1 rounded-full font-bold border border-purple-500/20">Heavy Duty</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h3 class="font-bold text-lg text-white">Energy Elemental Deck Box</h3>
+                            <p class="text-slate-400 text-xs mt-1">Mechanical snap-lock vault configured to store a full tournament deck. Custom-matched to chosen elemental colors.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-xl font-black text-yellow-400">฿250 <span class="text-xs text-slate-500 font-normal">base</span></span>
+                            <button onclick="openConfig('Elemental Deck Box', 250)" class="px-4 py-2 bg-slate-800 text-white font-semibold text-xs rounded-xl hover:bg-yellow-500 hover:text-slate-950 transition">Configure Base</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TRACKER TAB ================= -->
+        <div id="tab-tracker" class="hidden max-w-xl mx-auto space-y-6">
+            <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-4">
+                <h3 class="text-xl font-bold text-white">Live Logistics Tracker</h3>
+                <p class="text-xs text-slate-400">Input your 10-digit lab tracking identification code to retrieve your order state details instantly.</p>
+                <div class="flex gap-2">
+                    <input type="text" id="track-input" placeholder="e.g., PKMN-8A9F2" class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-500">
+                    <button onclick="trackOrder()" class="px-5 py-2 bg-yellow-500 text-slate-950 font-bold text-sm rounded-xl hover:bg-yellow-400 transition">Query System</button>
+                </div>
+            </div>
+
+            <div id="tracker-result" class="hidden bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+                <div class="flex justify-between items-start border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="text-xs text-slate-500 font-mono" id="lbl-track-id">ID: PKMN-8A9F2</span>
